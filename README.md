@@ -1,4 +1,4 @@
-# AuthACL AI Context Pack
+# AI Context Pack
 
 Reusable Cursor context package for:
 - project rules (`.cursor/rules/*.mdc`)
