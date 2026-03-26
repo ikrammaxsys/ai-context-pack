@@ -1,0 +1,21 @@
+---
+description: Front-end asset layout for feature pages and shared JavaScript utilities in wwwroot.
+globs: "wwwroot/**/*.js"
+alwaysApply: false
+---
+
+# Frontend assets (wwwroot)
+
+## Feature-specific code
+
+- Prefer a feature folder under `wwwroot/<FeatureName>/` for page scripts and helpers.
+- Keep feature logic out of vendor trees like `wwwroot/Plugins/` and `wwwroot/Scripts/vendor/`.
+
+## Shared utilities
+
+- Reusable helpers belong under `wwwroot/js/utils/` (for example `dateHelpers.js`, `objectHelpers.js`).
+
+## Conventions
+
+- Use camelCase for variables and functions in hand-written app JavaScript.
+- Match existing patterns in the same feature folder (AJAX style, table framework, UI toolkit).

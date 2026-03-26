@@ -1,0 +1,26 @@
+---
+description: REST API route conventions and endpoint discovery source of truth.
+globs: "Controllers/Api/**/*.cs"
+alwaysApply: false
+---
+
+# API routes
+
+## Base path
+
+Effective URLs are `/<ApiPrefix>/{controller-template}/...` when a route prefix convention prepends `<ApiPrefix>` for API controllers.
+
+## Controller templates
+
+Use plural, lowercase route segments that match the resource:
+
+- `[Route("users")]`, `[Route("roles")]`, `[Route("companies")]`, `[Route("resources")]`, `[Route("auth")]`.
+
+## Actions
+
+- Standard CRUD: `[HttpGet]`, `[HttpGet("{id:int}")]`, `[HttpPost]`, `[HttpPut("{id:int}")]`, `[HttpDelete("{id:int}")]`.
+- Multi-word paths use kebab-case: `refresh-token`, `reset-password`, `mass-insert`, nested like `{id:int}/reset-password/send-email`.
+
+## Full API catalog
+
+Do not duplicate full route tables in rules. Use Swagger in Development as the source of truth.

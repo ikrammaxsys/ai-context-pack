@@ -1,0 +1,29 @@
+---
+description: Backend layout, namespaces, DI, and C# naming conventions for layered ASP.NET apps.
+globs: "**/*.cs"
+alwaysApply: false
+---
+
+# Backend structure
+
+## Layout
+
+- API: `Controllers/Api/` (JSON endpoints).
+- MVC UI: `Controllers/Web/` (views and page flows).
+- Services: `Services/` with contracts in `Services/Interfaces/`.
+- Models: `Models/<Domain>/`.
+- Cross-cutting: `Extension/`, `Helpers/`, `Enums/`, `ViewModels/`.
+
+## Dependency injection
+
+Register services in `Program.cs` as `AddScoped<I..., ...>()` (or another intentional lifetime).
+
+## C# naming
+
+- Types and public members: PascalCase.
+- Locals and parameters: camelCase.
+- Interfaces: `I` prefix, for example `IUserService`.
+- Namespace: `<RootNamespace>.*`.
+
+Pair each service with its interface:
+`Services/Interfaces/I<Feature>Service.cs` + `Services/<Feature>Service.cs`.

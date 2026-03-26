@@ -1,0 +1,24 @@
+---
+description: SQL Server stored procedure naming and C# access patterns.
+globs: "**/*.{sql,cs}"
+alwaysApply: false
+---
+
+# Stored procedures
+
+## Naming
+
+- Procedures use prefix `<DbPrefix>` and PascalCase segments, for example `<DbPrefix>User_GetAll`.
+- Script files live under `Database/Scripts/` and should match or document deployed procedure names.
+
+## Calling from C#
+
+- Use fully qualified names: `"<DbSchema>.<DbPrefix>..."`.
+- Create commands with `StoredProcedureHelper.CreateCommand(connection, "<DbSchema>.<DbPrefix>...", transaction?)`.
+- Avoid raw SQL strings for procedure calls unless intentionally migrating away from stored procedures.
+
+```csharp
+using var command = StoredProcedureHelper.CreateCommand(_connection, "<DbSchema>.<DbPrefix>Role_GetAll");
+```
+
+- When adding a new procedure, add the `.sql` script under `Database/Scripts/` and reference the same fully qualified name in the service layer.
